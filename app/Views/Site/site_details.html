@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block site_content %}
+<h2 class="title text-center">Detalhes do produto {{ product.product_name }} </h2>
+<img src="{{ site_url() }}/{{ product.product_photo }}" alt="" height="120" width="150 ">
+
+<div class="productinfo">
+  {{ product.product_description }}
+  <h2>
+    {{ product.product_value | number_format(2, ',', '.') }}
+  </h2>
+
+  <!--Estoque do produto-->
+  Estoque:
+  {% if stock(product.id) == 0 %}
+  <span style="color: red; font-style: italic; font-size:12px">Indisponível</span>
+  {% else %}
+  {{ stock(product.id) }}
+  {% endif %}
+  <a href="#" class="btn btn-default add-to-cart" data-id="{{ product.id }}"><i
+      class="fa fa-shopping-cart add-to-cart"></i>Adicionar ao carrinho</a>
+</div>
+<!-- <div class="col-sm-9 padding-right">
+    <div class="features_items">
+       
+    </div>
+</div> -->
+{% endblock %}

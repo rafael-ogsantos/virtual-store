@@ -1,0 +1,74 @@
+{% extends 'layout.html' %} {% block site_content %}
+
+<h2 class="title text-center">Destaques</h2>
+<div class="padding-right">
+    <div class="features_items">
+        {% for product in products %}
+        <div class="col-sm-3">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <a href="/details/{{ product.product_slug }}" >
+                            <img src="{{ site_url() }}/{{ product.product_photo }}" alt="foto {{  product.product_slug }}" />
+                        </a>
+                        <h2>
+                            {{ product.product_value | number_format(2, ',', '.') }}
+                        </h2>
+                        <p>{{ product.product_name }}</p>
+
+                         Estoque: 
+                         {% if stock(product.id) == 0 %}
+                            <span style="color: red; font-style: italic; font-size:12px">Indisponível</span>
+                         {% else %}
+                            {{ stock(product.id) }}
+                         {% endif %}
+                        <a href="#" class="btn btn-default add-to-cart" data-id="{{ product.id }}">
+                            <i class="fa fa-shopping-cart"></i>
+                            Adicionar ao carrinho
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<h2 class="title text-center">Promoção</h2>
+<div class="padding-right">
+    <div class="features_items">
+        {% for promotion in promotions %}
+        <div class="col-sm-3">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <a href="/details/{{ promotion.product_slug }}" >
+                            <img src="{{ site_url() }}/{{ promotion.product_photo }}" alt="foto {{  promotion.product_slug }}" />
+                        </a>
+                        <h2>
+                            {% if (promotion.product_promotion == 1) %}  
+                              {{ promotion.product_value_promotion | number_format(2, ',', '.') }}
+                            {% else %}
+                              {{ promotion.product_value | number_format(2, ',', '.') }}
+                            {% endif %}
+                        </h2>
+                        <p>{{ promotion.product_name }}</p>
+
+                         <!--Estoque do produto-->
+                        Estoque: 
+                        {% if stock(promotion.id) == 0 %}
+                           <span style="color: red; font-style: italic; font-size:12px">Indisponível</span>
+                        {% else %}
+                           {{ stock(promotion.id) }}
+                        {% endif %}
+                        <a href="#" class="btn btn-default add-to-cart" id="add-to-cart" data-id="{{ promotion.id }}"><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

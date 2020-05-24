@@ -1,0 +1,14 @@
+{% extends 'layout_login.html' %}
+
+{% block login_content %}
+<div class="panel-login">
+  <h2>Faça seu login</h2>
+  <form action="/login/create" method="post">
+    <label for="">Email</label>
+    <input type="text" name="email" class="form-control">
+    <label for="">Password</label>
+    <input type="password" name="passwd" class="form-control">
+    <input type="submit" value="Sign Up">
+  </form>
+</div>
+{% endblock %}

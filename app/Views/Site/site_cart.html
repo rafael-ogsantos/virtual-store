@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block site_content %}
+
+{% if products|length > 0 %}
+<table class="table" style="width: 75%;">
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Qtd.</th>
+      <th>Valor</th>
+      <th>Subtotal</th>
+      <th>Remover</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <td>{{ product.products.product_name }}</td>
+      <td>
+        <input type="text" value="{{ product.qtd }}"
+          style="height: 20px; text-align:right; width: 30px; border: none; border-bottom: 1px solid #ccc" class="quantity-products">
+        <button data-id="{{ product.products.id }}" class="btn-update-product">Alterar</button>
+      </td>
+      <td>R$ {{ product.value | number_format(2, ',', '.') }}</td>
+      <td>R$ {{ product.subtotal | number_format(2, ',', '.') }}</td>
+      <td>
+        <button class="btn-delete-product" data-id="{{ product.products.id }}">Remover</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">
+        Total da compra <span>R$ {{ valueProductsInCart() | number_format(2, ',', '.') }}</span>
+        <br />
+        Valor do frete: R$ {{ frete | number_format(2, ',', '.') }}
+        <br />
+        Valor total da compra: R$ {{ subtotalProducts() | number_format(2, ',', '.')}}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5">
+        <input type="text" name="frete" id="message-frete" placeholder="Digite cep para entrega">
+        <button id="btn-calculate-frete">Calcular frete</button>
+        <div id="message-frete"></div>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+{% else %}
+
+<h3>Ainda não a produtos no carrinho</h3>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,135 @@
+*{
+  outline: none;
+}
+
+a{
+  color: red;
+}
+
+.panel{
+  background-color: #F0F0E9;;
+  height: auto;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.products{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.padding {
+  padding: 5px;
+}
+
+.line{
+  width: 100%;
+  background-color: rgba(209, 209, 209, 0.933);
+  height: 1px;
+}
+
+.btn-update-product{
+  background-color: indigo;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  margin-left: 12px;
+}
+
+#btn-calculate-frete{
+  background-color: teal;
+  color: #fefefe;
+  border: none;
+  padding: 5px;
+  border-radius: 2px;
+}
+.btn-delete-product{
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  margin-left: 12px;
+}
+
+.panel-login{
+  position: fixed;
+  background-color: rgb(255, 255, 255);
+  width: 30%;
+  height: auto;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.login-admin{
+  margin-bottom: 15px;
+  color: rgb(158, 158, 158);
+  text-align: center;
+  text-shadow: none;
+  background-color: initial;
+  border: 0;
+  margin-top: 8%;
+}
+
+.panel input {
+  width: 100%;
+  margin-bottom: 13px;
+}
+
+.panel-total-products{
+
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.panel-login input[type="submit"]{
+  background-color: #28a745;
+  background-image: linear-gradient(-180deg,#34d058,#28a745 90%);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 6px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.btn-danger:hover{
+  color: #d9534f !important;
+}
+
+@media(max-width: 900px){
+  .panel-login{
+      position: fixed;
+      background-color: rgb(255, 255, 255);
+      min-width: 300px;
+      height: auto;
+      padding: 20px;
+      left: 50%;
+      top: 50%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 20px;
+      transform: translate(-50%, -50%);
+  }   
+  
+  .login-admin{
+      margin-bottom: 15px;
+      color: #333;
+      text-align: center;
+      text-shadow: none;
+      background-color: initial;
+      border: 0;
+  }
+}

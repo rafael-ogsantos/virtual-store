@@ -1,0 +1,28 @@
+{
+    "name": "rafael/loja-virtual",
+    "description": "",
+    "authors": [
+        {
+            "name": "Rafael Oliveira",
+            "email": "rafaelogsantos@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^5.0",
+        "twig/twig": "^3.0",
+        "cagartner/correios-consulta": "^0.1.14",
+        "phpmailer/phpmailer": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Controllers\\": "app/Controllers",
+            "App\\Models\\": "app/Models",
+            "App\\Interfaces\\": "app/Interfaces",
+            "App\\Repositories\\": "app/Repositories",
+            "App\\Classes\\": "app/Classes"
+        },
+        "files": [
+            "app/helper.php"
+        ]
+    }
+}

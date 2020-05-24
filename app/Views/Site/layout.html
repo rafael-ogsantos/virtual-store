@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'includes/site_head.html' %}
+
+<body>
+    {% include 'includes/site_header.html' %} {% include 'includes/site_menu.html' %}
+
+    <section id="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    {% include 'includes/site_content_left.html' %}
+                    <div class="">
+                        {{ breadCrumb() | raw }}
+                    </div>
+                </div>
+
+
+
+                {% block site_content %} {% endblock %}
+
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    {% include 'includes/site_footer.html' %}
+   
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="{{ site_url() }}/bower_components/numeral/numeral.js"></script>
+    <script src="{{ site_url() }}/bower_components/numeral/locales/pt-br.js"></script>
+    <script src="{{ site_url() }}/assets/js/bootstrap.min.js"></script>
+    <script src="{{ site_url() }}/assets/js/bootstrap.min.js"></script>
+    <script src="{{ site_url() }}/assets/js/Site/language.js"></script>
+    <script src="{{ site_url() }}/assets/js/Site/frete.js"></script>
+    <script src="{{ site_url() }}/assets/js/price-range.js"></script>
+    <script src="{{ site_url() }}/assets/js/jquery.prettyPhoto.js"></script>
+    <script src="{{ site_url() }}/assets/js/main.js"></script>
+    <script src="{{ site_url() }}/assets/js/Site/cart.js"></script>
+</body>
+
+</html>
