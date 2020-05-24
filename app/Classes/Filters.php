@@ -4,7 +4,11 @@ namespace App\Classes;
 
 class Filters
 {
-  public function filter($value, $type)
+  /**
+   * @param string $value Input field
+   * @param string $type Field type
+   */
+  public function filter(string $value, string $type)
   {
     switch($type) {
       case 'string':

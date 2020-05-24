@@ -13,8 +13,25 @@ class Stock
     $this->stockRepository = new StockRepository;
   }
 
-  public function currentStock(int $id)
+  /**
+   * @param int $id
+   * @return int
+   */
+  public function currentStock(int $id): int
   {
     return $this->stockRepository->quantityProductStock($id)->stock_quantity;
+  }
+
+  /**
+   * @param int $qtdProductStock
+   * @param int $qtdProductCart
+   * @return bool
+   */
+  public function hasStock(int $id, int $qtdProductCart): bool
+  {
+    if($this->currentStock($id) < $qtdProductCart) {
+      return false;
+    }
+    return true;
   }
 }

@@ -21,7 +21,7 @@ class Login
     $this->passwd = $passwd;
   }
 
-  public function login(Model $model)
+  public function login(Model $model): bool
   {
     $userFound = $model->find('email', $this->email);
     if (!$userFound) {

@@ -63,6 +63,10 @@ class Cart
   public function updateCart(int $id, int $qtd)
   {
     if ($this->statusCart->productInCart($id)) {
+      if(!$this->stock->hasStock($id, $qtd)) {
+        echo 'semEstoque';
+        die();
+      }
       $_SESSION['cart'][$id] = $qtd;
       $this->cartModel->update($id, $qtd);
     }

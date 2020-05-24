@@ -4,14 +4,22 @@ namespace App\Classes;
 
 class ErrorsValidate
 {
-  public function add($field, $message)
+  /**
+   * @param string $field Message index
+   * @param string $field Your message
+   */
+  public function add(string $field, string $message)
   {
     if (!$_SESSION['error'][$field]) {
       $_SESSION['error'][$field] = $message;
     }
   }
 
-  public function show($field)
+   /**
+   * @param string $field Message index
+   * @return string
+   */
+  public function show(string $field): string
   {
     if (isset($_SESSION['error'][$field])) {
       $message = $_SESSION['error'][$field];
@@ -20,7 +28,10 @@ class ErrorsValidate
     return (isset($message)) ? "<span style='color: red'>* " . $message . "</span>" : '';
   }
 
-  public function errorValidation()
+  /**
+   * @return bool
+   */
+  public function errorValidation(): bool
   {
     if (isset($_SESSION['error'])) {
       return (empty($_SESSION['error'])) ? false : true;
