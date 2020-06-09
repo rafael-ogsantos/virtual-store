@@ -92,7 +92,7 @@ class Email
     $this->email->Port = 587;
     $this->email->SMTPAuth = true;
     $this->email->Username = 'rafaelogsantos@gmail.com';
-    $this->email->Password = 'rafA980305';
+    $this->email->Password = '###';
     $this->email->isHTML(true);
     $this->email->setFrom('rafaelogsantos@gmail.com');
     $this->email->FromName = $this->who;
