@@ -2,11 +2,13 @@
 
 namespace App\Classes;
 
+use App\Models\Site\StockModel;
 use App\Repositories\Site\StockRepository;
 
 class Stock 
 {
   private $stockRepository;
+  private $stockModel;
 
   public function __construct()
   {
@@ -33,5 +35,11 @@ class Stock
       return false;
     }
     return true;
+  }
+
+  public function updateStock(int $id, int $qtd)
+  {
+    $stockModel = new StockModel;
+    $stockModel->update($id, $qtd);
   }
 }

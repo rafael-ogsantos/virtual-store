@@ -26,7 +26,7 @@ class Frete
     return 0;
   }
 
-  public function cleanFrete()
+  public function clearFrete()
   {
     unset($_SESSION['frete']);
     unset($_SESSION['valor']);

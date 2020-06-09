@@ -49,6 +49,11 @@
     </tr>
   </tfoot>
 </table>
+
+{% if numberProductsInCart() | length > 0 %}
+  <button id="btn-checkout" class="btn btn-success" style="float: right">Finalizar compra</button>
+{% endif %}
+
 {% else %}
 
 <h3>Ainda não a produtos no carrinho</h3>

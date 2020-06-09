@@ -4,7 +4,9 @@ namespace App\Classes;
 
 use App\Classes\StatusCart;
 use App\Classes\Stock;
+use App\Classes\IdRandom;
 use App\Models\Site\CartModel;
+use App\Models\Site\StockModel;
 
 class Cart
 {
@@ -28,20 +30,21 @@ class Cart
 
   public function add(int $id)
   {
-    if($this->stock->currentStock($id) > 1) {
+    if ($this->stock->currentStock($id) > 0) {
       if ($this->statusCart->productInCart($id)) {
         $_SESSION['cart'][$id] += 1;
-        $this->cartModel->update($id, $this->productCart($id));
+        $this->cartModel->update($id, $this->productCart($id), IdRandom::generateId());
       } else {
         $_SESSION['cart'][$id] = 1;
         $this->cartModel->add([
           1 => $id,
           2 => 1,
-          3 => 123,
+          3 => IdRandom::generateId(),
           4 => date('Y-m-d H:i:s'),
-          5 => date('Y-m-d H:i:s', strtotime('+1minutes'))
+          5 => date('Y-m-d H:i:s', strtotime('+30minutes'))
         ]);
       }
+      (new StockModel)->update($id, ($this->stock->currentStock($id) - 1));
     }
   }
 
@@ -63,20 +66,36 @@ class Cart
   public function updateCart(int $id, int $qtd)
   {
     if ($this->statusCart->productInCart($id)) {
-      if(!$this->stock->hasStock($id, $qtd)) {
-        echo 'semEstoque';
-        die();
+
+      $currentStock = $this->stock->currentStock($id);
+      $difference = abs($_SESSION['cart'][$id] - $qtd);
+
+
+
+
+      $stockModel = new StockModel;
+
+      if ($_SESSION['cart'][$id] > $qtd) {
+        (!$currentStock > $difference) ?: $stockModel->update($id, ($currentStock + $difference));
+      } else {
+        if (!$this->stock->hasStock($id, $difference)) {
+          echo 'semEstoque';
+          die();
+        }
+        $stockModel->update($id, ($currentStock - $difference));
       }
+
       $_SESSION['cart'][$id] = $qtd;
-      $this->cartModel->update($id, $qtd);
+      $this->cartModel->update($id, $qtd, IdRandom::generateId());
     }
   }
 
   public function removeProductCart(int $id)
   {
     if ($this->statusCart->productInCart($id)) {
+      $this->cartModel->remove($id, IdRandom::generateId());
+      (new StockModel)->update($id, ($this->stock->currentStock($id) + $this->productCart($id)));
       unset($_SESSION['cart'][$id]);
-      $this->cartModel->remove($id);
     }
   }
 

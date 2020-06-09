@@ -52,9 +52,14 @@ class RegisterController extends BaseController
         $firstName = $this->filters->filter('sobrenome', 'string');
         $email = $this->filters->filter('email', 'string');
 
-        $atributes = [$name, $firstName, $email];
+        $registerUser = $this->user->create([
+          'name' => $name,
+          'firstName' => $firstName,
+          'email' => $email
+        ]);
 
-        if ($this->user->create($atributes)) {
+
+        if ($registerUser) {
           $this->flash->add('message_register', 'Cadastrado com sucesso!', 'success');
           unset($_SESSION['persist']);
           return redirect('/register');

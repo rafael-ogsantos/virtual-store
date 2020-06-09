@@ -105,6 +105,42 @@
         "homepage": "http://code.google.com/p/phpquery/"
     },
     {
+        "name": "pagseguro/php",
+        "version": "2.7.1",
+        "version_normalized": "2.7.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pagseguro/php.git",
+            "reference": "1c956e609acdef2dd7a37ece5cb5d13e7fc672a0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pagseguro/php/zipball/1c956e609acdef2dd7a37ece5cb5d13e7fc672a0",
+            "reference": "1c956e609acdef2dd7a37ece5cb5d13e7fc672a0",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "lib-curl": "*",
+            "lib-libxml": "*",
+            "lib-openssl": "*",
+            "php": ">=5.4.27"
+        },
+        "time": "2016-01-28T20:17:46+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "source/PagSeguroLibrary"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache License 2.0"
+        ],
+        "description": "Biblioteca de integração com o PagSeguro"
+    },
+    {
         "name": "phpmailer/phpmailer",
         "version": "v6.1.5",
         "version_normalized": "6.1.5.0",

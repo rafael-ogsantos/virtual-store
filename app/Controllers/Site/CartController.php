@@ -3,6 +3,7 @@
 namespace App\Controllers\Site;
 
 use App\Classes\Cart;
+use App\Classes\ExpiredCartProducts;
 use App\Classes\Frete;
 use App\Controllers\BaseController;
 use App\Repositories\Site\ProductCartRepository;
@@ -20,6 +21,9 @@ class CartController extends BaseController
 
   public function index()
   {
+    // $expiredProducts = new ExpiredCartProducts;
+    // $expiredProducts->checkProductsExpiredCart();
+
     $products = $this->productsCartRepository->allProductsCart();
     $frete = new Frete;
     $data = [
@@ -49,8 +53,8 @@ class CartController extends BaseController
   {
     $id = (int) $_POST['id'];
     $quantity = (int) $_POST['qtd'];
-
     if ($quantity === '' || $quantity === 0) {
+      
       $this->cart->removeProductCart($id);
       echo 'deleted';
     } else {

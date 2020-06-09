@@ -6,6 +6,8 @@ use App\Controllers\Controller;
 use App\Controllers\Method;
 use App\Repositories\Site\ProductRepository;
 
+date_default_timezone_set('America/Sao_Paulo');
+
 $template = new Template;
 $twig = $template->init(); 
 

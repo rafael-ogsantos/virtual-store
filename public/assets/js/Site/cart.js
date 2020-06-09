@@ -43,6 +43,10 @@ $(document).ready(() => {
       data: 'id=' + id + '&qtd=' + quantityProducts,
       type: 'post',
       success: function (data) {
+        if(data === 'semEstoque'){
+          alert('Esse produto acabou no estoque!')
+          location.reload()
+        }
         if (data === 'updated' || data === 'deleted') {
           location.reload();
         }
