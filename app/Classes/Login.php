@@ -35,8 +35,7 @@ class Login
       $_SESSION['name'] = $userFound->name;
       $_SESSION['logged'] = true;
       return true;
-    }else{
-      return false;
     }
+    return false;
   }
 }
